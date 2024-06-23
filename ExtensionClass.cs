@@ -9,32 +9,32 @@ namespace GenericsEvents
 {
     public static class ExtensionClass
     {
-        public static T GetMax<T>(this List<T> list, Func<List<object>, List<float>> convertToNumber) where T : class, new()
+        public static T GetMax<T>(this List<T> list, Func<T, float> convertToNumber) where T : class/*, new()*/
         {
             //List<object> list
 
             //float maxNumber = ConvertToNumber(collection).Max();
-            object num = 5;
+            //object num = 5;
 
-            List<object> listObj = list.Cast<object>().ToList();
+            //List<object> listObj = list.Cast<object>().ToList();
 
-            //foreach (var item in list)
-            //{
-            //    listObj.Add(Convert.)
+            List<float> floats = new List<float>();
 
-            //}
+            foreach (var item in list)
+            {
+                floats.Add(convertToNumber(item));
+
+            }
 
             //listObj = list.Cast<object>;
 
-            float maxNumber = convertToNumber(listObj).Max();
+            var maxNumber = floats.Max();
 
-
+            //float maxNumber = convertToNumber(list).Max();
 
             //float data = ConvertToNumber(num);
 
-            //ConvertToNumber(data);
-
-            
+            //ConvertToNumber(data);            
 
             //Console.WriteLine($"Максимальное число коллекции  {maxNumber}");
 
@@ -42,19 +42,20 @@ namespace GenericsEvents
 
         }
 
-        public static List<float> ConvertToNumber(List<object> list)
+        public static float ConvertToNumber(object data)
         {
-            List<float> result = new List<float>();
+            //List<float> result = new List<float>();
 
-            foreach (object obj in list)
-            {
-                result.Add(Convert.ToSingle(obj));
-                //Console.WriteLine(obj);
-            }
+            //foreach (object obj in list)
+            //{
+            //    result.Add(Convert.ToSingle(obj));
+            //    //Console.WriteLine(obj);
+            //}
 
-            //float rezult = Convert.ToSingle(num);
+            float result = Convert.ToSingle(data);
 
             return result;
         }
     }
 }
+//public static T GetMax<T>(this List<T> list, Func<List<T>, List<float>> convertToNumber) where T : class/*, new()*

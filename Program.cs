@@ -9,7 +9,7 @@ namespace GenericsEvents
         static void Main(string[] args)
         {
             //NOTE Тестовый объект
-            List<object> ts = new List<object>() { 1, 2, 3 };
+            List<object> ts = new List<object>() { 1, 2, 3, 4, 5 };
 
             //NOTE Вызов делегата обработки чисел
             //GetMax(ts, ConvertToNumber);
@@ -24,7 +24,7 @@ namespace GenericsEvents
             var rezult = ts.GetMax(ExtensionClass.ConvertToNumber);
 
             Console.WriteLine(rezult);
-            Console.ReadLine(); 
+            Console.ReadLine();
 
             //var dirName = "C:\\";
             //var searchDepth = 3;
