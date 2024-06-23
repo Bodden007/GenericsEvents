@@ -9,23 +9,36 @@ namespace GenericsEvents
 {
     public static class ExtensionClass
     {
-        public static float GetMax(this List<object> list, Func<List<object>, List<float>> convertToNumber)
+        public static T GetMax<T>(this List<T> list, Func<List<object>, List<float>> convertToNumber) where T : class, new()
         {
             //List<object> list
 
             //float maxNumber = ConvertToNumber(collection).Max();
             object num = 5;
 
-            float maxNumber = ConvertToNumber(list).Max();
+            List<object> listObj = list.Cast<object>().ToList();
+
+            //foreach (var item in list)
+            //{
+            //    listObj.Add(Convert.)
+
+            //}
+
+            //listObj = list.Cast<object>;
+
+            float maxNumber = convertToNumber(listObj).Max();
+
+
+
             //float data = ConvertToNumber(num);
 
             //ConvertToNumber(data);
 
-            //T t = ConvertToNumber(data);
+            
 
             //Console.WriteLine($"Максимальное число коллекции  {maxNumber}");
 
-            return maxNumber;
+            return (T)Convert.ChangeType(maxNumber, typeof(T));
 
         }
 
