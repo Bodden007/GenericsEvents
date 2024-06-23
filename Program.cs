@@ -11,36 +11,44 @@ namespace GenericsEvents
             List<object> ts = new List<object>() { 1, 2, 3 };
 
             //NOTE Вызов делегата обработки чисел
-            GetMax(ts,ConvertToNumber);   
+            //GetMax(ts, ConvertToNumber);
 
-            var dirName = "C:\\";
-            var searchDepth = 3;
-            FindFiles findFiles = new FindFiles(dirName, searchDepth);
+            //object data = 3;
 
-            //FIXME раскоментировать
-            //-----------------------------
-            findFiles.OnFound += Message;            
-            //-----------------------------
-            findFiles.Find();
+            Console.WriteLine(GetMax(ts, ConvertToNumber));
+            Console.ReadLine();
+
+            //var rezult = ts.GetMax(data, );
+
+            //var dirName = "C:\\";
+            //var searchDepth = 3;
+            //FindFiles findFiles = new FindFiles(dirName, searchDepth);
+
+            ////FIXME раскоментировать
+            ////-----------------------------
+            //findFiles.OnFound += Message;
+            ////-----------------------------
+            //findFiles.Find();
         }
-
-        /// <summary>
-        /// Метод поиска максимального числа в коллекции
-        /// </summary>
-        /// <param name="list"></param>
-        /// <param name="ConvertToNumber"></param>
-        public static void GetMax(List<object> list, Func<List<object>, List<float>> ConvertToNumber)
+        public static float GetMax(List<object> list, Func<List<object>, List<float>> ConvertToNumber)
         {
+            //List<object> list
+
+            //float maxNumber = ConvertToNumber(collection).Max();
+            object num = 5;
+
             float maxNumber = ConvertToNumber(list).Max();
+            //float data = ConvertToNumber(num);
 
-            Console.WriteLine($"Максимальное число коллекции  {maxNumber}");
+            //ConvertToNumber(data);
+
+            //T t = ConvertToNumber(data);
+
+            //Console.WriteLine($"Максимальное число коллекции  {maxNumber}");
+
+            return maxNumber;
+
         }
-
-        /// <summary>
-        /// Метод конвертации из Object to float
-        /// </summary>
-        /// <param name="list"></param>
-        /// <returns></returns>
         public static List<float> ConvertToNumber(List<object> list)
         {
             List<float> result = new List<float>();
@@ -48,18 +56,30 @@ namespace GenericsEvents
             foreach (object obj in list)
             {
                 result.Add(Convert.ToSingle(obj));
-                Console.WriteLine(obj);
+                //Console.WriteLine(obj);
             }
+
+            //float rezult = Convert.ToSingle(num);
+
             return result;
         }
+
+
+        /// <summary>
+        /// Метод конвертации из Object to float
+        /// </summary>
+        /// <param name="list"></param>
+        /// <returns></returns>
+
 
         /// <summary>
         /// Метод обработчика событий
         /// </summary>
         /// <param name="files"></param>
-        public static void Message(string[]? files)
-        {
-            Console.WriteLine($"Нашел : {files.Count()}");
-        }
+        //public static void Message(string[]? files)
+        //    {
+        //        Console.WriteLine($"Нашел : {files.Count()}");
+        //    }
+
     }
 }
