@@ -1,5 +1,6 @@
 ﻿using System.Reflection;
 
+
 namespace GenericsEvents
 {
 
@@ -15,10 +16,15 @@ namespace GenericsEvents
 
             //object data = 3;
 
-            Console.WriteLine(GetMax(ts, ConvertToNumber));
-            Console.ReadLine();
+            //ExtensionClass extensionClass = new ExtensionClass();
 
-            //var rezult = ts.GetMax(data, );
+            //Console.WriteLine(ExtensionClass.GetMax(ts, ConvertToNumber));
+            //Console.ReadLine();
+
+            var rezult = ts.GetMax(ExtensionClass.ConvertToNumber);
+
+            Console.WriteLine(rezult);
+            Console.ReadLine(); 
 
             //var dirName = "C:\\";
             //var searchDepth = 3;
@@ -30,39 +36,39 @@ namespace GenericsEvents
             ////-----------------------------
             //findFiles.Find();
         }
-        public static float GetMax(List<object> list, Func<List<object>, List<float>> ConvertToNumber)
-        {
-            //List<object> list
+        //public static float GetMax(this List<object> list, Func<List<object>, List<float>> convertToNumber)
+        //{
+        //    //List<object> list
 
-            //float maxNumber = ConvertToNumber(collection).Max();
-            object num = 5;
+        //    //float maxNumber = ConvertToNumber(collection).Max();
+        //    object num = 5;
 
-            float maxNumber = ConvertToNumber(list).Max();
-            //float data = ConvertToNumber(num);
+        //    float maxNumber = ConvertToNumber(list).Max();
+        //    //float data = ConvertToNumber(num);
 
-            //ConvertToNumber(data);
+        //    //ConvertToNumber(data);
 
-            //T t = ConvertToNumber(data);
+        //    //T t = ConvertToNumber(data);
 
-            //Console.WriteLine($"Максимальное число коллекции  {maxNumber}");
+        //    //Console.WriteLine($"Максимальное число коллекции  {maxNumber}");
 
-            return maxNumber;
+        //    return maxNumber;
 
-        }
-        public static List<float> ConvertToNumber(List<object> list)
-        {
-            List<float> result = new List<float>();
+        //}
+        //public static List<float> ConvertToNumber(List<object> list)
+        //{
+        //    List<float> result = new List<float>();
 
-            foreach (object obj in list)
-            {
-                result.Add(Convert.ToSingle(obj));
-                //Console.WriteLine(obj);
-            }
+        //    foreach (object obj in list)
+        //    {
+        //        result.Add(Convert.ToSingle(obj));
+        //        //Console.WriteLine(obj);
+        //    }
 
-            //float rezult = Convert.ToSingle(num);
+        //    //float rezult = Convert.ToSingle(num);
 
-            return result;
-        }
+        //    return result;
+        //}
 
 
         /// <summary>
