@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using GenericsEvents.ExtensionGeneric;
 
 
 namespace GenericsEvents
@@ -21,10 +22,13 @@ namespace GenericsEvents
             //Console.WriteLine(ExtensionClass.GetMax(ts, ConvertToNumber));
             //Console.ReadLine();
 
-            var rezult = ts.GetMax(ExtensionClass.ConvertToNumber);
+            Controller controller = new Controller();
+            controller.RunController();
 
-            Console.WriteLine(rezult);
-            Console.ReadLine();
+            //var rezult = ts.GetMax(ExtensionClass.ConvertToNumber);
+
+            //Console.WriteLine(rezult);
+            //Console.ReadLine();
 
             //var dirName = "C:\\";
             //var searchDepth = 3;
