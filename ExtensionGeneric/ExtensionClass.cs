@@ -30,6 +30,7 @@ namespace GenericsEvents.ExtensionGeneric
             return (T)Convert.ChangeType(maxNumber, typeof(T));
 
         }
+
         /// <summary>
         /// Метод конвертации значения в тип float
         /// </summary>
