@@ -6,12 +6,15 @@ using System.Threading.Tasks;
 
 namespace GenericsEvents.Event
 {
+    
     internal class FileArgs : EventArgs
     {
         public string FileName { get; set; }
-        public FileArgs(string fileName)
+        public string DirectoryName {  get; set; }  
+        public FileArgs(string directoryName, string fileName)
         {
-            FileName = fileName;
+            DirectoryName = directoryName;
+            FileName = fileName;           
         }
     }
 }

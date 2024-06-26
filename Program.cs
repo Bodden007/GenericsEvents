@@ -8,29 +8,16 @@ namespace GenericsEvents
     {
         static void Main(string[] args)
         {
-            Controller controller = new Controller();
+            //NOTE Test the directory
+            var dirName = "C:\\";
+
+            //NOTE Test object
+            List<object> listTs = new List<object>() { 1, 2, 3, 4, 5 };
+
+            Controller controller = new Controller(listTs, dirName);
 
             controller.RunController();
-
-            //var dirName = "C:\\";
-            //var searchDepth = 3;
-            //FindFiles findFiles = new FindFiles(dirName, searchDepth);
-
-            ////FIXME раскоментировать
-            ////-----------------------------
-            //findFiles.OnFound += Message;
-            ////-----------------------------
-            //findFiles.Find();
         }
-
-        /// <summary>
-        /// Метод обработчика событий
-        /// </summary>
-        /// <param name="files"></param>
-        //public static void Message(string[]? files)
-        //    {
-        //        Console.WriteLine($"Нашел : {files.Count()}");
-        //    }
 
     }
 }

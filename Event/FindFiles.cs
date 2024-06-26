@@ -5,12 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GenericsEvents.Event
-{
-
+namespace GenericsEvents.Event{
     internal class FindFiles
     {
-        public string DirName {  get; set; }
+        public string DirName { get; set; }
         public FindFiles(string dirName)
         {
             DirName = dirName;
@@ -19,11 +17,11 @@ namespace GenericsEvents.Event
 
         public event EventHandler? FileFound;
 
-
+        /// <summary>
+        /// Поиск файла
+        /// </summary>
         public void Find()
         {
-            var num = 0;            
-
             List<string> directories = new List<string>();
 
             var bufDirectories = Directory.GetDirectories(DirName);
@@ -32,66 +30,63 @@ namespace GenericsEvents.Event
 
             var subStr = ".log";
 
+            //NOTE первый проход по диску
             foreach (var dir in bufDirectories)
             {
                 directories.Add(dir);
-            }            
-
-            foreach (var dir in bufFiles)
-            {
-
-                Console.WriteLine($"Files: {dir}");
-                if (dir.IndexOf(subStr) > 1)
-                {
-                    Console.WriteLine($"Обнаружен {subStr}");
-                }
-                //Console.WriteLine($"Х з {dir.IndexOf(subStr)}");
             }
 
-            #region
-            //while (!Console.KeyAvailable)
-            //{
-            //    Thread.Sleep(1000);
+            //NOTE проход по каталогам. Рекурсивный цикл
+            while (!Console.KeyAvailable)
+            {
 
+                //NOTE поиск по файлам
+                foreach (var dir in bufFiles)
+                {
 
-            //    if (num == 5)
-            //    {
-            //        var mes = "привет";
-            //        FileFound(this, new FileArgs(mes));
-            //        break;
-            //    }
+                    //Console.WriteLine($"Files: {dir}");
+                    try
+                    {
+                        if (dir.IndexOf(subStr) > 1)
+                        {
+                            string[] splitFileName = dir.Split('\\');
 
-            //    if (Console.KeyAvailable)
-            //    {
-            //        Console.WriteLine("The program was stopped ");
-            //        break;
-            //    }
+                            FileFound?.Invoke(this, new FileArgs(DirName, splitFileName.Last()));
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        //Console.WriteLine($"{dir}  Отказано в доступе");
+                    }
+                }
 
-            //    num++;
+                Array.Clear(bufFiles);
 
-            //    Console.WriteLine($"Number {num}");
-            //}
-            #endregion
+                //NOTE следующий проход по директориям, если есть директории
+                try
+                {
+                    if (directories.Count > 0)
+                    {
+                        DirName = directories[0];
+
+                        bufDirectories = Directory.GetDirectories(DirName);
+
+                        bufFiles = Directory.GetFiles(DirName);
+
+                        directories.RemoveAt(0);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    //Console.WriteLine($"{directories[0]}  Отказано в доступе");
+                }
+
+                if (Console.KeyAvailable)
+                {
+                    Console.WriteLine("The program was stopped ");
+                    break;
+                }
+            }
         }
     }
 }
-//Dictionary<int, string[]> dict = new Dictionary<int, string[]>();
-
-//string[] directories = Directory.GetDirectories(dirName);
-
-
-//foreach (string dir in directories)
-//{
-
-//    try
-//    {
-//        string[]? files = Directory.GetFiles(dir);
-//        if (files.Length != null)
-//        {
-//            OnFound(files);
-//        }
-//    }
-//    catch (Exception ex)
-//    {
-//        Console.WriteLine("Отказано в доступе");
-//    }
