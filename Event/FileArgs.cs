@@ -8,8 +8,8 @@ namespace GenericsEvents.Event
 {
     internal class FileArgs : EventArgs
     {
-        public int FileName { get; set; }
-        public FileArgs(int fileName)
+        public string FileName { get; set; }
+        public FileArgs(string fileName)
         {
             FileName = fileName;
         }

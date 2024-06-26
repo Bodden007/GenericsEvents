@@ -1,5 +1,4 @@
 ﻿using System.Reflection;
-using GenericsEvents.ExtensionGeneric;
 
 
 namespace GenericsEvents
@@ -11,7 +10,7 @@ namespace GenericsEvents
         {
             Controller controller = new Controller();
 
-            controller.RunControllerAsync();
+            controller.RunController();
 
             //var dirName = "C:\\";
             //var searchDepth = 3;
