@@ -27,9 +27,6 @@ namespace GenericsEvents
 
             Console.WriteLine("");
             Console.WriteLine("Finding files...");
-            Console.WriteLine("");
-            Console.WriteLine("For stop app, press any button");
-            Console.WriteLine("");
 
             findFiles.FileFound += MessageController;
             findFiles.Find();
