@@ -56,7 +56,10 @@ namespace GenericsEvents.Event{
                     }
                     catch (Exception ex)
                     {
+                        //FIXME закоментировать
+                        //----------------------------------------------
                         //Console.WriteLine($"{dir}  Отказано в доступе");
+                        //----------------------------------------------
                     }
                 }
 
@@ -78,7 +81,11 @@ namespace GenericsEvents.Event{
                 }
                 catch (Exception ex)
                 {
+                    //FIXME закоментировать
+                    //---------------------------------------------------------
                     //Console.WriteLine($"{directories[0]}  Отказано в доступе");
+                    //---------------------------------------------------------
+                    directories.RemoveAt(0);
                 }
 
                 if (Console.KeyAvailable)
