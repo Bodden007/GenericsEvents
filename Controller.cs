@@ -11,11 +11,13 @@ namespace GenericsEvents
     internal class Controller
     {
         public string DirName {  get; set; }
+        public string FileName { get; set; }
         List<object> ListTest;
-        public Controller(List<object> listTest, string dirName)
+        public Controller(List<object> listTest, string dirName, string fileName)
         {
             DirName = dirName;
             ListTest = listTest;
+            FileName = fileName;
         }
         public void RunController()
         {
@@ -23,7 +25,7 @@ namespace GenericsEvents
 
             Console.WriteLine($"The maximum number {maxNumber}");
 
-            FindFiles findFiles = new FindFiles(DirName);
+            FindFiles findFiles = new FindFiles(DirName, FileName);
 
             Console.WriteLine("");
             Console.WriteLine("Finding files...");

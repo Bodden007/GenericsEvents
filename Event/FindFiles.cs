@@ -9,9 +9,11 @@ namespace GenericsEvents.Event{
     internal class FindFiles
     {
         public string DirName { get; set; }
-        public FindFiles(string dirName)
+        public string FileName { get; set; }
+        public FindFiles(string dirName, string fileName)
         {
             DirName = dirName;
+            FileName = fileName;
         }
         public delegate void EventHandler(object? sender, FileArgs e);
 
@@ -24,12 +26,10 @@ namespace GenericsEvents.Event{
         {
             var bufFiles = Directory.GetFiles(DirName);
 
-            var subStr = ".log";
-
-            //NOTE первый проход по диску
+            //NOTE поиск файла
             foreach (var dir in bufFiles)
             {
-                if (dir.IndexOf(subStr) > 1)
+                if (dir.IndexOf(FileName) > 1)
                 {
                     string[] splitFileName = dir.Split('\\');
 

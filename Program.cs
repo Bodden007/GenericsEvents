@@ -11,10 +11,13 @@ namespace GenericsEvents
             //NOTE Test the directory
             var dirName = "C:\\";
 
+            //NOTE Test for file name
+            var fileName = ".log";
+
             //NOTE Test object
             List<object> listTs = new List<object>() { 1, 2, 3, 4, 5 };
 
-            Controller controller = new Controller(listTs, dirName);
+            Controller controller = new Controller(listTs, dirName, fileName);
 
             controller.RunController();
         }
